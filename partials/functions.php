@@ -14,5 +14,9 @@ function random_password($length) {
     // funzione shuffle dei caratteri in chars
     return substr(str_shuffle($chars), 0, $length);
 }
-// var_dump(random_password($length));
+$session_psw = random_password($length);
+var_dump($session_psw);
+session_start();
+
+// $_SESSION['$length'];
 ?>

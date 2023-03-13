@@ -20,6 +20,8 @@ Dare all'utente anche la possibilità di permettere o meno la ripetizione di car
 // includo partials/functions
 include(__DIR__ . "/partials/functions.php"); 
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,18 +42,21 @@ include(__DIR__ . "/partials/functions.php");
     <form method="GET">
         <div class="container">
             <div class="my-5">
-                <label for="custom_length">Choose your password's length:</label>
+                <label for="custom_length">Choose your password's length(between 8 and 20):</label>
                 <input type="number" name="my_length" id="custom_length" min="8" max="20" />
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Generate Password</button>
             </div>
+           
             <div for="floatingTextarea">Your password is <?= $length ?> characters long</div>
-            <div class="form-floating">
-                <textarea class="form-control w-25" placeholder="Your next secure password" id="floatingTextarea">
-                    <?= random_password($length) ?>
-                </textarea>
-                <label for="floatingTextarea">Your generated password is:</label>
-            </div>
+    <div class="form-floating">
+        <textarea class="form-control w-25" placeholder="Your next secure password" id="floatingTextarea">
+            <?= random_password($length) ?>
+        </textarea>
+        <label for="floatingTextarea">Your generated password is:</label>
+    </div>
+</div>  
         </div>
     </form>
 </body>
 </html>
+ 
