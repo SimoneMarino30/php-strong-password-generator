@@ -2,11 +2,11 @@
 Dobbiamo creare una pagina che permetta ai nostri utenti di utilizzare il nostro generatore di password (abbastanza) sicure.
 L'esercizio è suddiviso in varie milestone ed è molto importante svilupparle in modo ordinato.
 
-Milestone 1
+Milestone 1 ✔
 Creare un form che invii in GET la lunghezza della password. Una nostra funzione utilizzerà questo dato per generare una password casuale (composta da lettere, lettere maiuscole, numeri e simboli) da restituire all'utente.
 Scriviamo tutto (logica e layout) in un unico file *index.php*
 
-Milestone 2
+Milestone 2 ✔
 Verificato il corretto funzionamento del nostro codice, spostiamo la logica in un file *functions.php* che includeremo poi nella pagina principale
 
 Milestone 3 (BONUS)
@@ -16,6 +16,11 @@ Milestone 4 (BONUS)
 Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme).
 Dare all'utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali. -->
 
+<?php 
+// includo partials/functions
+include(__DIR__ . "/partials/functions.php"); 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,9 +37,21 @@ Dare all'utente anche la possibilità di permettere o meno la ripetizione di car
     />
 </head>
 <body>
-    <div class="container">
-        <h1>hello world!</h1>
-    </div>
-    
+    <form method="GET">
+        <div class="container">
+            <div class="my-5">
+                <label for="custom_length">Choose your password's length:</label>
+                <input type="number" name="my_length" id="custom_length" min="8" max="20" />
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Generate Password</button>
+            </div>
+            <div for="floatingTextarea">Your password is <?= $length ?> characters long</div>
+            <div class="form-floating">
+                <textarea class="form-control w-25" placeholder="Your next secure password" id="floatingTextarea">
+                    <?= random_password($length) ?>
+                </textarea>
+                <label for="floatingTextarea">Your generated password is:</label>
+            </div>
+        </div>
+    </form>
 </body>
 </html>
